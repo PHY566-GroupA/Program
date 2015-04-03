@@ -12,7 +12,6 @@ from matplotlib.pylab import *
 from optparse import OptionParser
 from random import randrange
 from scipy import optimize
-import Image
 #from random import random
 #functions 
 def random_walk(n_walks,n_steps):
@@ -294,44 +293,48 @@ parser.add_option("--nsteps", dest="step", type="int",
 
 
 #Problem3 part C
-#xla=np.linspace(1,60,60)
-#nA,nB=n_density(60,40,100,5000000)
-#nA,nB=n_density(60,40,100,100000)
-#plt.plot(xla,nA,'r',label="$n(A)$")
-#plt.plot(xla,nB,'b',label="$n(B)$")
-#plt.legend(loc="best",fontsize=12)
-#plt.xlabel('$x grid$',fontsize=16)
-#plt.ylabel('$Probability$',fontsize=16)
-#plt.savefig('P3-3-v4.pdf')
+xla=np.linspace(1,60,60)
+#nA,nB=n_density(60,40,100,5000000)   # largest iteration
+nA,nB=n_density(60,40,100,1000)
+plt.plot(xla,nA,'r',label="$n(A)$")
+plt.plot(xla,nB,'b',label="$n(B)$")
+plt.legend(loc="best",fontsize=12)
+plt.xlabel('$x grid$',fontsize=16)
+plt.ylabel('$Probability$',fontsize=16)
+plt.savefig('P3-3show.pdf')
 
+
+
+'''
 # Problem 1.
-#xn,xn2,r,r2=random_walk(10000,100)
-#xla=np.linspace(1,100,100)
+xn,xn2,r,r2=random_walk(10000,100)
+xla=np.linspace(1,100,100)
 
-#def fit1(x,a,b):
-#    return a*x+b
-#guess=np.array([1.0,0.0])
-#a,b=optimize.curve_fit(fit1,xla,r2,guess)
-#print a
-#yla=a[0]*xla+a[1]
+def fit1(x,a,b):
+    return a*x+b
+guess=np.array([1.0,0.0])
+a,b=optimize.curve_fit(fit1,xla,r2,guess)
+print a
+yla=a[0]*xla+a[1]
     
-#plt.clf()
-#plt.plot(xla,xn,'r',label="$<x_n>$")
-#plt.plot(xla,xn2,'b',label="$<(x_n)^2>$")
-#plt.ylim([-5,60])
-#plt.xlim([1,100])
-#plt.legend(loc="best",fontsize=12)
-#plt.xlabel('$n$',fontsize=16)
-#plt.ylabel('$Arbs.$',fontsize=16)
-#plt.savefig('P1-1.pdf')
+plt.clf()
+plt.plot(xla,xn,'r',label="$<x_n>$")
+plt.plot(xla,xn2,'b',label="$<(x_n)^2>$")
+plt.ylim([-5,60])
+plt.xlim([1,100])
+plt.legend(loc="best",fontsize=12)
+plt.xlabel('$n$',fontsize=16)
+plt.ylabel('$Arbs.$',fontsize=16)
+plt.savefig('P1-1.pdf')
 
 
-#plt.clf()
-#plt.plot(xla,r2,'r',label="$<r^2>\ from \ calculated$")
-#plt.plot(xla,yla,'b',label="$fit \ curve$")
-#plt.legend(loc="best",fontsize=12)
-#toWrite= "y = %f*x - %f" % (a[0],-a[1])
-#plt.text(5,60,toWrite)
-#plt.xlabel('$Times (n)$', fontsize=16)
-#plt.ylabel('$<r^2>$',fontsize=16)
-#plt.savefig('P1-2.pdf')
+plt.clf()
+plt.plot(xla,r2,'r',label="$<r^2>\ from \ calculated$")
+plt.plot(xla,yla,'b',label="$fit \ curve$")
+plt.legend(loc="best",fontsize=12)
+toWrite= "y = %f*x - %f" % (a[0],-a[1])
+plt.text(5,60,toWrite)
+plt.xlabel('$Times (n)$', fontsize=16)
+plt.ylabel('$<r^2>$',fontsize=16)
+plt.savefig('P1-2.pdf')
+'''
